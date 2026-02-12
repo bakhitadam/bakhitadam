@@ -29,6 +29,67 @@ Mechanical enthusiast focused on **mechanism design**, **simulation**, and **eng
 - Check pressure angle and curvature limits.
 - Plot follower displacement/velocity/acceleration.
 
+## ✅ Example You Should Follow (Starter App)
+If you want to **start now**, build this exact mini project first.
+
+### Project Structure
+```bash
+mechanism-studio/
+├── backend/
+│   ├── main.py
+│   ├── mechanism.py
+│   └── requirements.txt
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+└── README.md
+```
+
+### Backend Example (`backend/mechanism.py`)
+```python
+import math
+
+def slider_crank_position(r: float, l: float, theta_deg: float) -> float:
+    """Return piston displacement x for slider-crank mechanism."""
+    theta = math.radians(theta_deg)
+    return r * math.cos(theta) + math.sqrt(l**2 - (r * math.sin(theta))**2)
+```
+
+### API Example (`backend/main.py`)
+```python
+from fastapi import FastAPI
+from mechanism import slider_crank_position
+
+app = FastAPI(title="Mechanical Mechanism Studio")
+
+@app.get("/slider-crank")
+def get_slider_crank(r: float, l: float, theta: float):
+    x = slider_crank_position(r, l, theta)
+    return {"r": r, "l": l, "theta": theta, "x": x}
+```
+
+### Frontend Example (`frontend/app.js`)
+```javascript
+async function run() {
+  const r = 50, l = 140, theta = 30;
+  const res = await fetch(`http://127.0.0.1:8000/slider-crank?r=${r}&l=${l}&theta=${theta}`);
+  const data = await res.json();
+  document.getElementById("result").textContent = `Piston position x = ${data.x.toFixed(2)} mm`;
+}
+run();
+```
+
+### Run Commands
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+Then open `frontend/index.html` in browser and display API result.
+
+---
+
 ## 🛠️ App Idea: Mechanical Mechanism Studio
 A simple app where users can:
 - Select a mechanism type (4-bar, slider-crank, cam-follower).
@@ -54,6 +115,3 @@ A simple app where users can:
 - LinkedIn: *Add your link*
 - Email: *Add your email*
 - Portfolio Website: *Add your URL*
-
----
-If you'd like, I can next help you generate a full starter codebase for the mechanism app (frontend + backend + sample calculations).
