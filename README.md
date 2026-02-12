@@ -1,117 +1,85 @@
-# Hi, I'm Bakhit Adam 👋
+# Bakhit Adam | Mechanical Design Portfolio
 
-Mechanical enthusiast focused on **mechanism design**, **simulation**, and **engineering software tools**.
+Mechanical design learner focused on **mechanisms**, **CAD modeling**, and **engineering software tools**.
 
-## 🚀 About Me
-- 🔧 Interested in: CAD modeling, machine elements, and mechanical mechanism optimization.
-- 💻 Building: a portfolio and lightweight engineering apps for mechanism analysis.
-- 📚 Learning: Python, MATLAB-style numerical workflows, and web tools for engineers.
-- 🤝 Open to collaborate on: mechanical design projects, educational engineering tools, and R&D prototypes.
+## 👨‍🔧 Profile
+I design and study mechanical systems with a focus on practical mechanism performance:
+- Kinematic analysis
+- Motion simulation
+- Parametric CAD design
+- Engineering calculation tools
 
-## 🧰 Skills
-- **Mechanical:** Kinematics, statics, dynamics, tolerance analysis, design for manufacturing.
-- **Software:** Python, NumPy, Matplotlib, basic web development (HTML/CSS/JS).
-- **Tools:** SolidWorks / Fusion 360 / AutoCAD (or your preferred CAD tools).
+## 🧰 Core Skills
+- **Mechanical Design:** Linkages, shafts, gears, cam-follower systems, tolerance basics
+- **Analysis:** Kinematics, force estimation, design calculations
+- **CAD & Tools:** SolidWorks, Fusion 360, AutoCAD
+- **Programming:** Python, NumPy, Matplotlib, basic HTML/CSS/JavaScript
 
-## 📂 Portfolio Projects (Mechanical Mechanisms)
-### 1) Four-Bar Linkage Analyzer
-- Input link lengths and crank angle.
-- Compute rocker angle, velocity ratio, and transmission angle.
-- Visualize mechanism motion in 2D.
+## 📁 Featured Mechanical Design Projects
 
-### 2) Slider-Crank Simulator
-- Piston position, velocity, acceleration.
-- Sensitivity analysis versus crank radius and connecting rod length.
-- Export plots and design reports.
+### 1) Four-Bar Linkage Design & Analysis
+**Goal:** Design a four-bar mechanism for controlled rocker output.
 
-### 3) Cam-Follower Profile Designer
-- Generate cam profile from displacement law.
-- Check pressure angle and curvature limits.
-- Plot follower displacement/velocity/acceleration.
+**Work completed:**
+- Selected link lengths based on motion requirements.
+- Calculated transmission angle across crank rotation.
+- Identified toggle/near-singularity positions.
+- Built CAD concept and 2D motion visualization.
 
-## ✅ Example You Should Follow (Starter App)
-If you want to **start now**, build this exact mini project first.
-
-### Project Structure
-```bash
-mechanism-studio/
-├── backend/
-│   ├── main.py
-│   ├── mechanism.py
-│   └── requirements.txt
-├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   └── app.js
-└── README.md
-```
-
-### Backend Example (`backend/mechanism.py`)
-```python
-import math
-
-def slider_crank_position(r: float, l: float, theta_deg: float) -> float:
-    """Return piston displacement x for slider-crank mechanism."""
-    theta = math.radians(theta_deg)
-    return r * math.cos(theta) + math.sqrt(l**2 - (r * math.sin(theta))**2)
-```
-
-### API Example (`backend/main.py`)
-```python
-from fastapi import FastAPI
-from mechanism import slider_crank_position
-
-app = FastAPI(title="Mechanical Mechanism Studio")
-
-@app.get("/slider-crank")
-def get_slider_crank(r: float, l: float, theta: float):
-    x = slider_crank_position(r, l, theta)
-    return {"r": r, "l": l, "theta": theta, "x": x}
-```
-
-### Frontend Example (`frontend/app.js`)
-```javascript
-async function run() {
-  const r = 50, l = 140, theta = 30;
-  const res = await fetch(`http://127.0.0.1:8000/slider-crank?r=${r}&l=${l}&theta=${theta}`);
-  const data = await res.json();
-  document.getElementById("result").textContent = `Piston position x = ${data.x.toFixed(2)} mm`;
-}
-run();
-```
-
-### Run Commands
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-Then open `frontend/index.html` in browser and display API result.
+**Deliverables:**
+- Link parameter table
+- Angle vs crank-position plots
+- Design notes with assumptions
 
 ---
 
-## 🛠️ App Idea: Mechanical Mechanism Studio
-A simple app where users can:
-- Select a mechanism type (4-bar, slider-crank, cam-follower).
-- Enter design parameters.
-- Run kinematic calculations.
-- View plots and animated motion.
-- Export results as PDF/CSV.
+### 2) Slider-Crank Mechanism Study
+**Goal:** Evaluate piston displacement and motion quality.
 
-### Suggested Tech Stack
-- **Frontend:** HTML/CSS/JS (or React).
-- **Backend:** Python (FastAPI/Flask).
-- **Numerical Engine:** NumPy + SciPy.
-- **Visualization:** Matplotlib or Plotly.
+**Work completed:**
+- Computed piston position vs crank angle.
+- Estimated velocity/acceleration trends.
+- Compared multiple rod-length ratios.
+- Suggested dimensions for smoother operation.
 
-## 🗺️ Development Roadmap
-1. Define MVP (start with one mechanism: slider-crank).
-2. Implement core equations and validation tests.
-3. Build UI forms and result charts.
-4. Add animation playback and downloadable reports.
-5. Expand to more mechanism types.
+**Deliverables:**
+- Calculation sheet / Python script
+- Plots of displacement, velocity, acceleration
+- Design recommendation summary
 
-## 📫 Contact
-- LinkedIn: *Add your link*
-- Email: *Add your email*
-- Portfolio Website: *Add your URL*
+---
+
+### 3) Cam-Follower Profile Prototype
+**Goal:** Create a cam profile from displacement law.
+
+**Work completed:**
+- Defined follower motion segments (rise, dwell, return).
+- Generated cam profile points.
+- Checked pressure angle and curvature limits.
+- Proposed manufacturable profile update.
+
+**Deliverables:**
+- Cam profile chart
+- Motion law documentation
+- Risk/constraint notes
+
+## 🧪 Example Calculation Snippet (Slider-Crank)
+```python
+import math
+
+def piston_position(r, l, theta_deg):
+    theta = math.radians(theta_deg)
+    return r * math.cos(theta) + math.sqrt(l**2 - (r * math.sin(theta))**2)
+
+print(piston_position(50, 140, 30))
+```
+
+## 🎯 Portfolio Direction (Next 3 Steps)
+1. Publish CAD screenshots/animations for each project.
+2. Add one validation case comparing hand-calculation vs code output.
+3. Build a small web app to input mechanism parameters and visualize motion.
+
+## 📬 Contact
+- Email: your-email@example.com
+- LinkedIn: https://linkedin.com/in/your-profile
+- GitHub: https://github.com/bakhitadam
